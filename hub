@@ -1,0 +1,68 @@
+if game.PlaceId == 10119617028 then
+    local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+    local Window = Rayfield:CreateWindow({
+        Name = "AuntJemima Hub",
+        LoadingTitle = "Airsoft Center",
+        LoadingSubtitle = "by BigO",
+        ConfigurationSaving = {
+            Enabled = true,
+            FileName = "AuntJemima"
+        },
+        KeySystem = true, -- Set this to true to use our key system
+        KeySettings = {
+            Title = "AuntJemima",
+            Subtitle = "No Ads Key System",
+            Note = "Join the discord (https://discord.gg/tzvJZBrD8Y)",
+            Key = "AHRYQ%$)HRQ)%YZBFNADJA"
+    
+        }
+    })
+    local Tab = Window:CreateTab("Visuals")
+    local Section = Tab:CreateSection("ESP")
+    local Toggle = Tab:CreateToggle({
+        Name = "Name Esp (teamcheck)",
+        CurrentValue = false,
+        Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+        Callback = function(Value)
+            
+    --- Tut
+    
+    local esp_settings = { ---- table for esp settings 
+        textsize = 8,
+        colour = 255,255,255
+    }
+    
+    local gui = Instance.new("BillboardGui")
+    local esp = Instance.new("TextLabel",gui) ---- new instances to make the billboard gui and the textlabel
+    
+    
+    
+    gui.Name = "Cracked esp"; ---- properties of the esp
+    gui.ResetOnSpawn = false
+    gui.AlwaysOnTop = true;
+    gui.LightInfluence = 0;
+    gui.Size = UDim2.new(1.75, 0, 1.75, 0);
+    esp.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+    esp.Text = ""
+    esp.Size = UDim2.new(0.0001, 0.00001, 0.0001, 0.00001);
+    esp.BorderSizePixel = 4;
+    esp.BorderColor3 = Color3.new(esp_settings.colour)
+    esp.BorderSizePixel = 0
+    esp.Font = "GothamSemibold"
+    esp.TextSize = esp_settings.textsize
+    esp.TextColor3 = Color3.fromRGB(esp_settings.colour) -- text colour
+    
+    game:GetService("RunService").RenderStepped:Connect(function() ---- loops faster than a while loop :)
+        for i,v in pairs (game:GetService("Players"):GetPlayers()) do
+            if v ~= game:GetService("Players").LocalPlayer and v.Character.Head:FindFirstChild("Cracked esp")==nil and v.TeamColor ~= game:GetService("Players").LocalPlayer.TeamColor then -- craeting checks for team check, local player etc
+                esp.Text = "{"..v.Name.."}"
+                gui:Clone().Parent = v.Character.Head
+        end
+    end
+    end)
+            -- The function that takes place when the toggle is pressed
+                -- The variable (Value) is a boolean on whether the toggle is true or false
+        end,
+    })
+    Rayfield:LoadConfiguration()
+end
